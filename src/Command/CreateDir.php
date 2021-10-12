@@ -41,18 +41,9 @@ class CreateDir extends HyperfCommand
 
     public function handle(): void
     {
-        $dirs = [
-            '/app/Service',
-            '/app/Controller',
-            '/app/Crontab',
-            '/app/Exception',
-            '/app/Model',
-            '/app/Processes',
-            '/app/Request',
-            '/app/Request',
-            '/app/Traits',
-            '/app/Utils',
-        ];
+        if (! $dirs = config('auv_dir')) {
+            $this->line('配置文件不存在，生成命令：php bin/hyperf.php vendor:publish auv/devtool', 'erroe');
+        }
 
         foreach ($dirs as $rawName) {
             if ($this->alreadyExists($rawName)) {
