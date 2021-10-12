@@ -1,0 +1,29 @@
+{
+  "name": "auv/devtool",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "runliu",
+      "email": "email@example.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "AUV_devtool\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "AUV_devtool_test\\": "tests"
+    }
+  },
+  "require": {
+    "php": ">=7.3",
+    "hyperf/command": "^2.1",
+    "hyperf/config": "^2.1",
+    "hyperf/framework": "^2.1",
+    "hyperf/di": "^2.1"
+  }
+}
