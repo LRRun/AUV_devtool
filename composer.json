@@ -25,5 +25,10 @@
     "hyperf/config": "^2.1",
     "hyperf/framework": "^2.1",
     "hyperf/di": "^2.1"
+  },
+  "extra": {
+    "hyperf": {
+      "config": "AUV_devtool\\ConfigProvider"
+    }
   }
 }
