@@ -36,7 +36,7 @@ class CreateDir extends HyperfCommand
     public function configure()
     {
         parent::configure();
-        $this->setDescription('Hyperf Demo Command');
+        $this->setDescription('创建AUV常用目录');
     }
 
     public function handle(): void
