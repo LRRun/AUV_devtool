@@ -2,7 +2,13 @@
   "name": "auv/devtool",
   "description": "description",
   "minimum-stability": "stable",
-  "license": "proprietary",
+  "license": "Apache-2.0",
+  "keywords": [
+    "php",
+    "swoole",
+    "hyperf",
+    "devtool"
+  ],
   "authors": [
     {
       "name": "runliu",
