@@ -30,5 +30,6 @@ class RequestIdMiddleware implements MiddlewareInterface
         $generator = $container->get(IdGeneratorInterface::class);
         $requestId = $generator->generate();
         Context::set('requestId', $requestId);
+        return $handler->handle($request);
     }
 }

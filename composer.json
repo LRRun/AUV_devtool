@@ -35,7 +35,8 @@
     "hyperf/logger": "2.2.*",
     "hyperf/http-server": "2.2.*",
     "hyperf/snowflake": "2.2.*",
-    "hyperf/constants": "2.2.*"
+    "hyperf/constants": "2.2.*",
+    "hyperf/database": "2.2.*"
   },
   "extra": {
     "hyperf": {

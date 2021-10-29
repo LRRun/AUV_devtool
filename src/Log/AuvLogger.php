@@ -5,6 +5,7 @@ namespace AUV_devtool\Log;
 
 
 use Hyperf\Utils\ApplicationContext;
+use Hyperf\Utils\Codec\Json;
 use Hyperf\Utils\Context;
 use Psr\Log\LoggerInterface;
 use Throwable;
@@ -33,17 +34,16 @@ class AuvLogger
      * @param array $extension 扩展打印内容
      * @param string $requestId 请求ID,不传递则自动获取协程上下文中的requestId
      */
-    public static function order(string $business, int $orderId, string $explain, array $info, string $level = 'INFO', array $extension = [], string $requestId = '')
+    public static function order(string $business, int $orderId, string $explain, array $info = [], string $level = 'info', array $extension = [], string $requestId = '')
     {
-        $requestId = !\empty($requestId) ? $requestId : Context::get('requestId');
-        $logLevel = \Hyperf\Logger\Logger::getLevels()[$level];
-        self::get('order')->$logLevel(
+        $requestId = !empty($requestId) ? $requestId : Context::get('requestId');
+        self::get('order')->$level(
             self::splicingStatement(
                 $requestId,
                 $business,
                 $orderId,
                 $explain,
-                $info
+                Json::encode($info)
             )
             , $extension);// 扩展打印内容
     }
@@ -58,17 +58,16 @@ class AuvLogger
      * @param array $extension 扩展打印内容
      * @param string $requestId 请求ID,不传递则自动获取协程上下文中的requestId
      */
-    public static function exception(string $business, Throwable $exception, string $fileName, int $lineNone, string $level = 'ERROR', array $extension = [], string $requestId = '')
+    public static function exception(string $business, Throwable $exception, string $fileName, int $lineNone, string $level = 'error', array $extension = [], string $requestId = '')
     {
-        $requestId = !\empty($requestId) ? $requestId : Context::get('requestId');
-        $logLevel = \Hyperf\Logger\Logger::getLevels()[$level];
-        self::get('exception')->$logLevel(
+        $requestId = !empty($requestId) ? $requestId : Context::get('requestId');
+        self::get('exception')->$level(
             self::splicingStatement(
                 $requestId,
                 $business,
                 $fileName,
                 $lineNone,
-                (string)$exception
+                (string)$exception->getMessage()
             )
             , $extension);// 扩展打印内容
     }
@@ -82,11 +81,10 @@ class AuvLogger
      * @param array $extension
      * @param string $requestId
      */
-    public static function sql(float $time, string $sql, string $level = 'INFO', array $extension = [], $requestId = '')
+    public static function sql(float $time, string $sql, string $level = 'info', array $extension = [], $requestId = '')
     {
-        $requestId = !\empty($requestId) ? $requestId : Context::get('requestId');
-        $logLevel = \Hyperf\Logger\Logger::getLevels()[$level];
-        self::get('sql')->$logLevel(
+        $requestId = !empty($requestId) ? $requestId : Context::get('requestId');
+        self::get('sql')->$level(
             self::splicingStatement(
                 $requestId,
                 $time,
