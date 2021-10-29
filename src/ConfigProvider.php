@@ -29,8 +29,8 @@ class ConfigProvider
                 [
                     'id' => 'config',
                     'description' => 'The config for devtool.',
-                    'source' => __DIR__ . '/../publish/auv_dir.php',
-                    'destination' => BASE_PATH . '/config/autoload/auv_dir.php',
+                    'source' => __DIR__ . '/../publish/auv_config.php',
+                    'destination' => BASE_PATH . '/config/autoload/auv_config.php',
                 ],
             ],
         ];
