@@ -61,7 +61,7 @@ class AuvInit extends HyperfCommand
 
         $this->line('准备删除不必要的文件', 'comment');
 
-        $fileName = BAST_PATH . '/Listener/DbQueryExecutedListener.php';
+        $fileName = BASE_PATH . '/Listener/DbQueryExecutedListener.php';
         $unlinkFail = false;
 
         if (file_exists($fileName)) {
